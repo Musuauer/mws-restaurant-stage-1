@@ -4,6 +4,19 @@ let restaurants,
 var map;
 var markers = [];
 
+const altsForImages = {
+	1: "People sitting at a full and fancy restaurant.",
+	2: "Close-up of a sliced pizza.",
+	3: "Empty restaurant tables with installed ventilation.",
+	4: "Open restaurant at night, on a corner",
+	5: "People sitting at tables and the kitchen of the restaurant in the background.",
+	6: "People sitting at tables in a restaurant that resembles a storage space.",
+	7: "Two men walking a tiny dog outside of a relaxed burger place.",
+	8: "Facade of a resturant, its logo and a blooming tree.",
+	9: "Distracted woman looking at her cellphone while her partner tries to eat with chopsticks.",
+	10: "Empty minimalist restaurant, very clean and white."
+};
+
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -140,7 +153,9 @@ createRestaurantHTML = (restaurant) => {
 
 	const image = document.createElement('img');
 	image.className = 'restaurant-img';
-	image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt = altsForImages[restaurant.id];
+
 	li.append(image);
 
 	const name = document.createElement('h1');
